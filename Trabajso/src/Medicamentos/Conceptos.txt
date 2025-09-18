@@ -1,0 +1,39 @@
+Método constructor:
+Utilizado en las clases Medicamento, Antibiotico, Analgesico y Antiinflamatorio para inicializar los atributos.
+
+Métodos:
+Definidos en todas las clases, como:
+-mostrarInformacion()
+-getNombre()
+-setDosis().
+
+Método de cadena:
+Usado en mostrarInformacion() para concatenar y mostrar texto con System.out.println().
+
+Modificador static:
+Utilizado en la clase Principal para definir métodos como imprimirDetalle() y crearMedicamento().
+
+Modificador final:
+Aplicado al atributo codigoRegistro, al método mostrarInformacion() y a la clase MedicamentoControlado.
+
+Herencia:
+Antibiotico, Analgesico y Antiinflamatorio heredan de la superclase Medicamento.
+
+Polimorfismo:
+Implementado sobrescribiendo el método mostrarInformacion() en cada subclase y utilizando un arreglo de tipo 
+Medicamento[] para almacenar diferentes tipos.
+
+Encapsulamiento:
+Todos los atributos son privados y se accede a ellos mediante métodos públicos (getters y setters).
+
+Métodos de entrada y salida:
+System.out.println() se usa para salida.
+
+Creación de objetos:
+Los objetos se crearon usando la palabra clave "new" en la clase Principal y los constructores.
+
+Arreglos:
+Se crea un arreglo de tipo Medicamento[] con cinco posiciones para almacenar instancias de subclases.
+
+Sobrecarga de métodos:
+Puede agregarse creando múltiples versiones de imprimirDetalle() con diferentes tipos de parámetros.
