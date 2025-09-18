@@ -2,8 +2,7 @@ package Medicamentos;
 
 public class MedicamentoControlado {
 
-	private final String codigoRegistro;
-
+    private final String codigoRegistro;
     private String nombre;
     private String dosis;
 
@@ -26,10 +25,14 @@ public class MedicamentoControlado {
     }
 
     public final void mostrarInformacion() {
-        System.out.println("medicamento controlado");
+        System.out.println("Medicamento controlado");
         System.out.println("Código de registro: " + codigoRegistro);
         System.out.println("Nombre: " + nombre);
         System.out.println("Dosis: " + dosis);
     }
-	
+
+    public static void main(String[] args) {
+        MedicamentoControlado medicamento = new MedicamentoControlado("MC-001", "Morfina", "10mg");
+        medicamento.mostrarInformacion();
+    }
 }
