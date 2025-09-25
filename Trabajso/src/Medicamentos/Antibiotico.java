@@ -2,28 +2,57 @@ package Medicamentos;
 
 public class Antibiotico extends Medicamento {
 
-	 private String tipoBacteria;
+    private String espectroAccion;
+    private String bacteriaObjetivo;
+    private boolean requiereReceta;
+    private int diasTratamiento;
+    
 
-	    public Antibiotico(String nombre, String dosis, String fabricante, String tipoBacteria) {
-	        super(nombre, dosis, fabricante);
-	        this.tipoBacteria = tipoBacteria;
-	    }
+    public Antibiotico() {
+        super();
+    }
 
-	    public String getTipoBacteria() {
-	        return tipoBacteria;
-	    }
+    public Antibiotico(String codigo_atc, String marca, String efecto,
+                      String calidad, String color, double peso, double precio,
+                      String espectroAccion, String bacteriaObjetivo, 
+                      boolean requiereReceta, int diasTratamiento) {
+        super(codigo_atc, marca, efecto, calidad, color, peso, precio);
+        this.espectroAccion = espectroAccion;
+        this.bacteriaObjetivo = bacteriaObjetivo;
+        this.requiereReceta = requiereReceta;
+        this.diasTratamiento = diasTratamiento;
+    }
+    
+ 
+    public String getEspectroAccion() { return espectroAccion; }
+    public void setEspectroAccion(String espectroAccion) { this.espectroAccion = espectroAccion; }
+    
+    public String getBacteriaObjetivo() { return bacteriaObjetivo; }
+    public void setBacteriaObjetivo(String bacteriaObjetivo) { this.bacteriaObjetivo = bacteriaObjetivo; }
+    
+    public boolean isRequiereReceta() { return requiereReceta; }
+    public void setRequiereReceta(boolean requiereReceta) { this.requiereReceta = requiereReceta; }
+    
+    public int getDiasTratamiento() { return diasTratamiento; }
+    public void setDiasTratamiento(int diasTratamiento) { this.diasTratamiento = diasTratamiento; }
+    
 
-	    public void setTipoBacteria(String tipoBacteria) {
-	        this.tipoBacteria = tipoBacteria;
-	    }
+    @Override
+    protected boolean esVigente() {
+        return esVigenteOtraFechaCaducidad(getFecha_caducidad());
+    }
 
-	    @Override
-	    public void mostrarInformacion() {
-	        System.out.println("antibiotico");
-	        System.out.println("Nombre: " + getNombre());
-	        System.out.println("Dosis: " + getDosis());
-	        System.out.println("Fabricante: " + getFabricante());
-	        System.out.println("Tipo de bacteria que combate: " + tipoBacteria);
-
-	    }
+    public boolean esEfectivoContra(String bacteria) {
+        return bacteriaObjetivo != null && 
+               bacteriaObjetivo.toLowerCase().contains(bacteria.toLowerCase());
+    }
+    
+    @Override
+    public void mostrarInformacion() {
+        super.mostrarInformacion();
+        System.out.println("Espectro de acción: " + espectroAccion);
+        System.out.println("Bacteria objetivo: " + bacteriaObjetivo);
+        System.out.println("Requiere receta: " + (requiereReceta ? "Sí" : "No"));
+        System.out.println("Días de tratamiento: " + diasTratamiento);
+    }
 }

@@ -1,29 +1,52 @@
 package Medicamentos;
 
-public class Analgesico extends Medicamento{
+public class Analgesico extends Medicamento {
 
-    private String nivelPotencia;
+    private String tipoAnalgesico;
+    private String intensidadDolor;
+    private int duracionEfecto; 
+    
 
-
-    public Analgesico(String nombre, String dosis, String fabricante, String nivelPotencia) {
-        super(nombre, dosis, fabricante);
-        this.nivelPotencia = nivelPotencia;
+    public Analgesico() {
+        super();
     }
+    
 
-    public String getNivelPotencia() {
-        return nivelPotencia;
+    public Analgesico(String codigo_atc, String marca, String efecto,
+                     String calidad, String color, double peso, double precio,
+                     String tipoAnalgesico, String intensidadDolor, int duracionEfecto) {
+        super(codigo_atc, marca, efecto, calidad, color, peso, precio);
+        this.tipoAnalgesico = tipoAnalgesico;
+        this.intensidadDolor = intensidadDolor;
+        this.duracionEfecto = duracionEfecto;
     }
-
-    public void setNivelPotencia(String nivelPotencia) {
-        this.nivelPotencia = nivelPotencia;
-    }
+    
+    public String getTipoAnalgesico() { return tipoAnalgesico; }
+    public void setTipoAnalgesico(String tipoAnalgesico) { this.tipoAnalgesico = tipoAnalgesico; }
+    
+    public String getIntensidadDolor() { return intensidadDolor; }
+    public void setIntensidadDolor(String intensidadDolor) { this.intensidadDolor = intensidadDolor; }
+    
+    public int getDuracionEfecto() { return duracionEfecto; }
+    public void setDuracionEfecto(int duracionEfecto) { this.duracionEfecto = duracionEfecto; }
+    
 
     @Override
+	public boolean esVigente() {
+        return esVigenteOtraFechaCaducidad(getFecha_caducidad());
+    }
+
+    public boolean esEfectivoParaDolor(String tipoDolor) {
+        return intensidadDolor != null && 
+               intensidadDolor.toLowerCase().contains(tipoDolor.toLowerCase());
+    }
+    
+    @Override
     public void mostrarInformacion() {
-        System.out.println("analgesico");
-        System.out.println("Nombre: " + getNombre());
-        System.out.println("Dosis: " + getDosis());
-        System.out.println("Fabricante: " + getFabricante());
-        System.out.println("Nivel de potencia: " + nivelPotencia);
+        super.mostrarInformacion();
+        System.out.println("Tipo Analgésico: " + tipoAnalgesico);
+        System.out.println("Intensidad para dolor: " + intensidadDolor);
+        System.out.println("Duración efecto: " + duracionEfecto + " horas");
     }
 }
+
