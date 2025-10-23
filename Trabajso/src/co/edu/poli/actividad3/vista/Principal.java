@@ -25,7 +25,7 @@ public class Principal {
             System.out.println("8. Salir");
 
             try {
-                System.out.print("Seleccione opcion: ");
+                System.out.print("Seleccione opcion:");
                 opcion = sc.nextInt();
                 sc.nextLine(); 
             } catch (InputMismatchException e) {
